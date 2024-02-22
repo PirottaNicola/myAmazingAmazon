@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 
 		VendorProduct vendorProduct = new VendorProduct();
 		vendorProduct.setId(new VendorProductPK(vendor.getVatNumber(), product.getProductId()));
-		vendorProduct.setQnt(insertProductDTO.getQnt());
+		vendorProduct.setQuantity(insertProductDTO.getQnt());
 		vendorProduct.setPrice(insertProductDTO.getPrice());
 		vendorProduct.setAvailable(true);
 		vendorProduct.setVendor(vendor);
@@ -85,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
 		VendorProduct relation = vendorProductRepo.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("VendorProduct non trovato!"));
 
-		relation.setQnt(relation.getQnt() + qnt);
+		relation.setQuantity(relation.getQuantity() + qnt);
 		if (available != null) {
 			relation.setAvailable(available);
 		}
@@ -112,7 +112,8 @@ public class ProductServiceImpl implements ProductService {
 		productInfoDTO.setProductId(product.getProductId());
 		productInfoDTO.setProductName(product.getProductName());
 		productInfoDTO.setCategoryName(product.getCategoryId().getCategory());
-		productInfoDTO.setTotalQuantity(product.getVendorProducts().stream().mapToInt(VendorProduct::getQnt).sum());
+		productInfoDTO
+				.setTotalQuantity(product.getVendorProducts().stream().mapToInt(VendorProduct::getQuantity).sum());
 		productInfoDTO
 				.setAvailableForRestock(product.getVendorProducts().stream().anyMatch(VendorProduct::getAvailable));
 

@@ -1,13 +1,7 @@
 package com.model.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -21,7 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = { "cartProduct" })
+@ToString()
 
 @Entity
 @Table(name = "vendor_product")
@@ -37,9 +31,8 @@ public class VendorProduct {
 	@Positive
 	private Double price;
 
-	@OneToMany(mappedBy = "vendorProduct")
-	@JsonBackReference("vendorProduct")
-	private List<CartProduct> cartProduct = new ArrayList<>();
+	@NotNull
+	private Boolean available;
 
 //	@ManyToOne
 //	@JsonBackReference
@@ -47,7 +40,7 @@ public class VendorProduct {
 //	@MapsId("vatNumber")
 //	private Vendor vendor;
 //
-//	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+//	@ManyToOne
 //	@JsonBackReference
 //	@JoinColumn(name = "product_id")
 //	@MapsId("productId")

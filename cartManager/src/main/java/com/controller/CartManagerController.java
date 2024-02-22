@@ -3,6 +3,7 @@ package com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class CartManagerController {
 	@Autowired
 	private ControllerHelper controllerHelper;
 
-//	@Value("${history-manager.url}")
+	@Value("${historymanager.url}")
 	private String historyManagerUrl;
 
 	//
@@ -92,10 +93,6 @@ public class CartManagerController {
 		OrderVO orderVO = controllerHelper.mapToOrderVO(customer);
 
 		HttpEntity<OrderVO> request = new HttpEntity<>(orderVO);
-
-		if (historyManagerUrl.isBlank()) {
-			historyManagerUrl = "http://localhost:8084/historyManager/processOrder";
-		}
 
 		restTemplate.exchange(historyManagerUrl, HttpMethod.POST, request, Void.class);
 

@@ -30,7 +30,7 @@ public class VendorProduct {
 	private VendorProductPK id;
 
 	@NotNull
-	private Integer qnt;
+	private Integer quantity;
 
 	@NotNull
 	@Positive
