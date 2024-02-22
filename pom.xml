@@ -45,5 +45,6 @@
 		<module>productManager</module>
 		<module>cartManager</module>
 		<module>historyManager</module>
+		<module>gateway</module>
 	</modules>
 </project>

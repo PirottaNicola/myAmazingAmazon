@@ -1,0 +1,26 @@
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: usermanager-service
+          uri: 'http://localhost:8082'
+          predicates:
+            - Path=/userManager/**
+        - id: productmanager-service
+          uri: 'http://localhost:8083'
+          predicates:
+            - Path=/productManager/**
+        - id: cartmanager-service
+          uri: 'http://localhost:8084'
+          predicates:
+            - Path=/cartManager/**
+        - id: historymanager-service
+          uri: 'http://localhost:8085'
+          predicates:
+            - Path=/historyManager/**
+            
