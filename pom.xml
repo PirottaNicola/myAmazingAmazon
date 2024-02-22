@@ -43,5 +43,6 @@
 		<module>microservizio1</module>
 		<module>userManager</module>
 		<module>eureka-server</module>
+		<module>productManager</module>
 	</modules>
 </project>
