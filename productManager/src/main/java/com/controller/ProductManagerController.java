@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.model.dto.InsertProductDTO;
 import com.model.dto.ProductInfoDTO;
 import com.model.dto.RestockProductDTO;
+import com.model.entity.Category;
 import com.model.entity.Product;
 import com.model.entity.VendorProduct;
 import com.service.ProductService;
@@ -32,6 +33,15 @@ public class ProductManagerController {
 	public ResponseEntity<?> insertProduct(@RequestBody @Valid InsertProductDTO insertProductDTO) {
 
 		VendorProduct body = service.insertProduct(insertProductDTO);
+
+		return new ResponseEntity<>(body, HttpStatus.OK);
+
+	}
+
+	@PostMapping("/insertCategory")
+	public ResponseEntity<?> insertCategory(@RequestBody @Valid Category category) {
+
+		Category body = service.insertCategory(category);
 
 		return new ResponseEntity<>(body, HttpStatus.OK);
 

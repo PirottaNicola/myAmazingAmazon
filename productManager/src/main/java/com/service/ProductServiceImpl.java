@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import com.model.dto.InsertProductDTO;
 import com.model.dto.ProductInfoDTO;
 import com.model.dto.RestockProductDTO;
+import com.model.entity.Category;
 import com.model.entity.Product;
 import com.model.entity.Vendor;
 import com.model.entity.VendorProduct;
 import com.model.entity.VendorProductPK;
+import com.repository.CategoryRepository;
 import com.repository.ProductRepository;
 import com.repository.VendorProductRepository;
 import com.repository.VendorRepository;
@@ -30,6 +32,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private VendorProductRepository vendorProductRepo;
 
+	@Autowired
+	private CategoryRepository categoryRepo;
+
 	@Override
 	public VendorProduct insertProduct(InsertProductDTO insertProductDTO) {
 		Product product = insertProductDTO.getProduct();
@@ -47,6 +52,24 @@ public class ProductServiceImpl implements ProductService {
 		vendorProduct.setProduct(product);
 
 		return vendorProductRepo.save(vendorProduct);
+	}
+
+	@Override
+	public Category insertCategory(Category category) {
+		String formattedCategory = capitalizeFirstLetter(category.getCategory());
+		category.setCategory(formattedCategory);
+		if (categoryRepo.findById(formattedCategory).isPresent()) {
+			throw new RuntimeException("Category già esistente");
+		}
+
+		return categoryRepo.save(category);
+	}
+
+	private String capitalizeFirstLetter(String category) {
+		if (category == null || category.isEmpty()) {
+			return category;
+		}
+		return category.substring(0, 1).toUpperCase() + category.substring(1).toLowerCase();
 	}
 
 	@Override
