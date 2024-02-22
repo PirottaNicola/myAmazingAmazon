@@ -44,5 +44,6 @@
 		<module>userManager</module>
 		<module>eureka-server</module>
 		<module>productManager</module>
+		<module>historyManager</module>
 	</modules>
 </project>
