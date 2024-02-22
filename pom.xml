@@ -40,10 +40,10 @@
 	</build>
 
 	<modules>
-		<module>microservizio1</module>
 		<module>userManager</module>
 		<module>eureka-server</module>
 		<module>productManager</module>
+		<module>cartManager</module>
 		<module>historyManager</module>
 	</modules>
 </project>
