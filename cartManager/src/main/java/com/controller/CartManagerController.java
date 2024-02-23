@@ -50,6 +50,7 @@ public class CartManagerController {
 	public ResponseEntity<?> insertCartProduct(@RequestBody InsertCartProductDTO insertCartProductDTO) {
 		CartProduct body = cartProductService.insertCartProduct(insertCartProductDTO);
 		return new ResponseEntity<>(body, HttpStatus.OK);
+
 	}
 
 	@DeleteMapping("/deleteCartProduct")
