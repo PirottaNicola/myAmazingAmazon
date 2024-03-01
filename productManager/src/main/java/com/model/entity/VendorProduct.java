@@ -1,6 +1,7 @@
 package com.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -46,7 +47,7 @@ public class VendorProduct {
 	private Vendor vendor;
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value = "product")
 	@JoinColumn(name = "product_id")
 	@MapsId("productId")
 	private Product product;

@@ -41,10 +41,10 @@ public class Product {
 	private String productName;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category categoryId;
+	@JoinColumn(name = "category")
+	private Category category;
 
-	@JsonManagedReference
+	@JsonManagedReference(value = "product")
 	@OneToMany(mappedBy = "product")
 	private List<VendorProduct> vendorProducts = new ArrayList<>();
 
