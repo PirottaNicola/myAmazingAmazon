@@ -1,3 +1,4 @@
+services:
   eureka-server:
     image: eureka-image:0.0.1
     container_name: eureka-container
@@ -43,7 +44,6 @@
     environment:
       MYSQL_DB_URL: jdbc:mysql://mysql-db-myamazon-container:3306/myamazon
       EUREKA_CLIENT_URL: http://eureka-container:8761/eureka
-      <<: *common-variables
 
   history-manager-service:
     image: history-manager-image:0.0.1
@@ -54,10 +54,9 @@
       - eureka-server
       - mongo-db
     restart: on-failure
+    environment:
       MYSQL_DB_URL: jdbc:mysql://mysql-db-myamazon-container:3306/myamazon
       EUREKA_CLIENT_URL: http://eureka-container:8761/eureka
-    environment:
-      <<: *common-variables
 
   product-manager-service:
     image: product-manager-image:0.0.1
@@ -68,10 +67,9 @@
       - eureka-server
       - mysql-db
     restart: on-failure
+    environment:
       MYSQL_DB_URL: jdbc:mysql://mysql-db-myamazon-container:3306/myamazon
       EUREKA_CLIENT_URL: http://eureka-container:8761/eureka
-    environment:
-      <<: *common-variables
 
   user-manager-service:
     image: user-manager-image:0.0.1
@@ -82,10 +80,9 @@
       - eureka-server
       - mysql-db
     restart: on-failure
+    environment:
       MYSQL_DB_URL: jdbc:mysql://mysql-db-myamazon-container:3306/myamazon
       EUREKA_CLIENT_URL: http://eureka-container:8761/eureka
-    environment:
-      <<: *common-variables
 
 volumes:
   mongodb_data:
