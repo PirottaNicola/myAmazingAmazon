@@ -46,7 +46,7 @@ public class VendorProduct {
 	private Vendor vendor;
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value = "product")
 	@JoinColumn(name = "product_id")
 	@MapsId("productId")
 	private Product product;

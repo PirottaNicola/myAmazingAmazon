@@ -30,4 +30,7 @@ public class Vendor {
 	@Size(min = 1, max = 45)
 	private String company;
 
+	@NotNull
+	private Boolean isActive;
+
 }
