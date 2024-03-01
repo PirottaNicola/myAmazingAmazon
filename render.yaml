@@ -1,3 +1,6 @@
+common-variables: &common-variables
+   MYSQL_DB_URL: jdbc:mysql://mysql-db-myamazon-container:3306/myamazon
+   EUREKA_CLIENT_URL: http://eureka-container:8761/eureka
   eureka-server:
     image: eureka-image:0.0.1
     container_name: eureka-container
