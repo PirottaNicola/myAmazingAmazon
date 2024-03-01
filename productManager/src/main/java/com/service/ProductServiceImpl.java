@@ -111,7 +111,7 @@ public class ProductServiceImpl implements ProductService {
 		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
 		productInfoDTO.setProductId(product.getProductId());
 		productInfoDTO.setProductName(product.getProductName());
-		productInfoDTO.setCategoryName(product.getCategoryId().getCategory());
+		productInfoDTO.setCategoryName(product.getCategory().getCategory());
 		productInfoDTO
 				.setTotalQuantity(product.getVendorProducts().stream().mapToInt(VendorProduct::getQuantity).sum());
 		productInfoDTO

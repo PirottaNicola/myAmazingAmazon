@@ -45,7 +45,6 @@ public class UserManagerController {
 		Vendor body = vendorService.insertVendor(vendor);
 
 		return new ResponseEntity<>(body, HttpStatus.OK);
-
 	}
 
 	@PostMapping("/updateCustomer")
