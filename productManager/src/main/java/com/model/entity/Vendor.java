@@ -39,7 +39,7 @@ public class Vendor {
 	@NotNull
 	private Boolean isActive;
 
-	@JsonManagedReference(value = "product")
+	@JsonManagedReference
 	@OneToMany(mappedBy = "vendor")
 	private List<VendorProduct> vendorProducts = new ArrayList<>();
 
